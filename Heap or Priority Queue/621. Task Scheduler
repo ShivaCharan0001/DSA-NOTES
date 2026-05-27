@@ -1,0 +1,19 @@
+# 621. Task Scheduler
+
+## Idea
+The tasks with the highest frequency are the hardest to place because they require the most cooldown gaps. To avoid creating unnecessary idle slots later, always execute the available task with the largest remaining count. After execution, temporarily move it to a cooldown queue and make it available again once its cooldown period ends. This ensures we use every time slot as efficiently as possible while respecting the cooldown constraint.
+
+### Key Points
+- Always prioritize the most frequent available task.
+- Store cooling tasks in a queue with their next available time.
+- When a task's cooldown expires, push it back into the heap.
+- Idle only when no task is available.
+
+### Pattern
+**Greedy + Max Heap + Cooldown Queue**
+
+### Complexity
+- **Time:** `O(N log K)`
+- **Space:** `O(K)`
+
+`N = total tasks, K = unique task types`
